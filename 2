@@ -1,0 +1,48 @@
+### Cada parrafo es una consulta por separado
+
+    Where Statement
+=, <>, <, >, And, Or, Like, Null, Not Null, In ###
+
+
+SELECT * 
+FROM EmployeesDemographics
+WHERE FirstName = 'Jim' 
+
+SELECT * 
+FROM EmployeesDemographics
+WHERE Age >= 30
+
+SELECT * 
+FROM EmployeesDemographics
+WHERE Age <= 32 AND Gender = 'Male'
+
+SELECT * 
+FROM EmployeesDemographics
+WHERE  LastName LIKE 'S%'
+
+SELECT * 
+FROM EmployeesDemographics
+WHERE  LastName LIKE '%S%'
+
+SELECT * 
+FROM EmployeesDemographics
+WHERE  LastName LIKE 'S%ott%'
+
+SELECT TOP 5 EmployeeID
+FROM EmployeeSalary
+WHERE EmployeeID IS NOT NULL
+
+SELECT *
+FROM EmployeesDemographics
+WHERE FirstName IN ('Jim', 'Michael')
+
+
+SELECT Gender, COUNT(Gender) AS Numero
+FROM EmployeesDemographics
+GROUP BY Gender
+
+SELECT Gender, COUNT(Gender) AS CountGender
+FROM EmployeesDemographics
+WHERE Age > 31
+GROUP BY Gender
+ORDER BY CountGender DESC 
