@@ -34,6 +34,8 @@ WHERE EmployeeID IS NOT NULL
 
 SELECT *
 FROM EmployeesDemographics
+
+
 WHERE FirstName IN ('Jim', 'Michael')
 
 
@@ -46,3 +48,9 @@ FROM EmployeesDemographics
 WHERE Age > 31
 GROUP BY Gender
 ORDER BY CountGender DESC 
+
+SELECT FirstName, Lastname, Age, Gender
+From EmployeesDemographics
+Where Age >= 30
+ORDER BY 4 DESC 
+# Aca el 4 representa la columna 4 (Age), es una manera alternativa de escribir la sentencia
