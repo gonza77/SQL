@@ -1,0 +1,37 @@
+# Inner Join, Outer Join, Left Outer Join, Right Outer Join
+
+
+SELECT *
+FROM EmployeesDemographics
+Inner Join EmployeeSalary
+	ON EmployeesDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT *
+FROM EmployeesDemographics
+Left Outer Join EmployeeSalary
+	ON EmployeesDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+
+SELECT EmployeesDemographics.EmployeeID, Firstname, Lastname, Salary
+FROM EmployeesDemographics
+Inner Join EmployeeSalary
+	ON EmployeesDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+
+
+SELECT EmployeesDemographics.EmployeeID, Firstname, Lastname, Salary
+FROM EmployeesDemographics
+Inner Join EmployeeSalary
+	ON EmployeesDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Where FirstName <> 'Michael'
+Order By Salary DESC
+
+SELECT JobTitle, AVG(Salary)
+FROM EmployeesDemographics
+Inner Join EmployeeSalary
+	ON EmployeesDemographics.EmployeeID = EmployeeSalary.EmployeeID
+WHERE JobTitle = 'Salesman'
+GROUP BY JobTitle
+
+#UNIONS
+
