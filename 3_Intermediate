@@ -1,4 +1,48 @@
 # Inner Join, Outer Join, Left Outer Join, Right Outer Join
+# I see you inserted new rows in EmployeeDemographics and created WareHouseEmployeeDemographics, but you did not put the code on Git. I will let it here, hope it helps:
+
+Table 1 Insert:
+
+Insert into EmployeeDemographics VALUES
+
+(1011, 'Ryan', 'Howard', 26, 'Male'),
+
+(NULL, 'Holly', 'Flax', NULL, NULL),
+
+(1013, 'Darryl', 'Philbin', NULL, 'Male')
+
+
+
+Table 3 Query:
+
+Create Table WareHouseEmployeeDemographics 
+
+(EmployeeID int, 
+
+FirstName varchar(50), 
+
+LastName varchar(50), 
+
+Age int, 
+
+Gender varchar(50)
+
+)
+
+
+
+Table 3 Insert:
+
+Insert into WareHouseEmployeeDemographics VALUES
+
+(1013, 'Darryl', 'Philbin', NULL, 'Male'),
+
+(1050, 'Roy', 'Anderson', 31, 'Male'),
+
+(1051, 'Hidetoshi', 'Hasagawa', 40, 'Male'),
+
+(1052, 'Val', 'Johnson', 31, 'Female')
+
 
 
 SELECT *
@@ -33,5 +77,26 @@ Inner Join EmployeeSalary
 WHERE JobTitle = 'Salesman'
 GROUP BY JobTitle
 
-#UNIONS
+#CASE
 
+Select FirstName, LastName, Age,
+CASE
+WHEN Age > 30 THEN 'Adult'
+WHEN AGE BETWEEN 27 AND 30 THEN 'Young'
+ELSE 'Novice'
+END
+From SQL_Tutorial.dbo.EmployeesDemographics
+Where age is not null
+ORDER BY Age
+
+
+SELECT FirstName, Lastname, Jobtitle, Salary,
+CASE
+WHEN JobTitle = 'Salesman' THEN Salary + (Salary*.10)
+WHEN JobTitle = 'Accountant' THEN Salary + (Salary*.05)
+WHEN JobTitle = 'HR' THEN Salary + (salary*.01)
+ELSE Salary + (Salary*.03)
+END AS SalaryAfterRaise
+FROM EmployeesDemographics
+JOIN EmployeeSalary
+ON EmployeesDemographics.EmployeeID = EmployeeSalary.EmployeeID
