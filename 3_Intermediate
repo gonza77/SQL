@@ -104,3 +104,44 @@ ON EmployeesDemographics.EmployeeID = EmployeeSalary.EmployeeID
 
 #Having
 
+SELECT JobTitle, COUNT(JobTitle)
+FROM EmployeeSalary
+JOIN EmployeesDemographics
+ON EmployeeSalary.EmployeeID = EmployeesDemographics.EmployeeID
+GROUP BY JobTitle
+HAVING COUNT(JobTitle) > 1
+
+
+SELECT JobTitle, AVG(Salary)
+FROM EmployeeSalary
+JOIN EmployeesDemographics
+ON EmployeeSalary.EmployeeID = EmployeesDemographics.EmployeeID
+GROUP BY JobTitle
+HAVING AVG(Salary) > 45000
+ORDER BY AVG(Salary) DESC
+
+
+
+## UPDATING AND DELETING DATA IN A TABLE
+-- INSERT INTO >> is going to create a new row
+-- UPDATE >> is going to alter an pre existing row
+-- DELETE
+
+SELECT *
+FROM EmployeesDemographics
+UPDATE EmployeesDemographics
+SET EmployeeID = 1012, Age = 31, Gender = 'Female'
+WHERE FirstName = 'Holly' AND LastName = 'Flax'
+
+-- Remember once you delete a row there is no way to get it back, so be careful, you'd better use first SELECT * FROM.. WHERE....to be sure
+DELETE FROM EmployeesDemographics
+WHERE EmployeeID = 1005
+
+##ALIASING - you can write AS or don't write it
+
+SELECT FirstName FSK
+FROM EmployeesDemographics
+
+
+SELECT FirstName + ' ' + LastName AS Fullname
+FROM EmployeesDemographics
