@@ -137,7 +137,7 @@ WHERE FirstName = 'Holly' AND LastName = 'Flax'
 DELETE FROM EmployeesDemographics
 WHERE EmployeeID = 1005
 
-##ALIASING - you can write AS or don't write it
+##ALIASING - you can write AS or don't write it, --Don't use letters aliasing, the can be pretty confusing
 
 SELECT FirstName FSK
 FROM EmployeesDemographics
@@ -145,3 +145,25 @@ FROM EmployeesDemographics
 
 SELECT FirstName + ' ' + LastName AS Fullname
 FROM EmployeesDemographics
+
+SELECT Demo.EmployeeID
+FROM [SQL_Tutorial].[dbo].[EmployeesDemographics] as Demo
+
+SELECT Demo.EmployeeID, Sal.Salary
+FROM [SQL_Tutorial].[dbo].[EmployeesDemographics] as Demo
+JOIN EmployeeSalary AS Sal
+	ON Demo.EmployeeID = Sal.EmployeeID
+
+--PARTITION BY, GROUP BY reduces the number of rows in our output
+
+SELECT FirstName, LastName, Gender, Salary
+, COUNT(Gender) OVER (PARTITION BY Gender) as TotalGender
+FROM EmployeeSalary AS SAL
+JOIN EmployeesDemographics AS DEMO
+ON Sal.EmployeeID = Demo.EmployeeID
+
+
+
+
+
+
