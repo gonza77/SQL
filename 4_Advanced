@@ -1,0 +1,16 @@
+--CTEs aka comment table expression, it only exists in a query we're going to write, once you delete it, it's like it never existed
+-- CTE is not stored anywhere, only in the query
+
+WITH CTE_Employee as 
+(SELECT FirstName, LastName, Gender, Salary
+, COUNT(Gender) OVER (PARTITION BY Gender) as TotalGender
+, AVG(Salary) OVER (PARTITION BY Gender) as AvgSalary
+FROM EmployeeSalary AS SAL
+JOIN EmployeesDemographics AS DEMO
+ON Sal.EmployeeID = Demo.EmployeeID
+WHERE Salary > 45000
+)
+Select FirstName, AvgSalary
+From CTE_Employee
+
+
