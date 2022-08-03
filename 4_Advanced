@@ -125,3 +125,5 @@ from EmployeeErrors
 
 Select Firstname, UPPER(FirstName)
 from EmployeeErrors
+
+--
